@@ -1,3 +1,10 @@
+:root {
+  --oldGrey: #666564;
+  --white: #ffff;
+  --yellow: #FFFF8A;
+  --grey: #b1afac;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,4 +14,15 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: whitesmoke;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 660px)  {
+  .container {
+    width: 85%;
+  }
 }

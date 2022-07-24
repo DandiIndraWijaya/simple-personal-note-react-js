@@ -1,0 +1,48 @@
+@import '../../style/style.css';
+
+.noteList {
+  margin-top: 15px;
+}
+
+.noteListContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: var(--white);
+  padding: 10px 0 20px;
+  box-shadow: 5px 3px var(--grey);
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.noteListButton {
+  display: flex;
+}
+
+.listButton {
+  padding: 5px 10px 0 13px;
+  margin-left: -5px;
+  background-color: var(--yellow);
+  border-top-right-radius: 30%;
+  color: var(--grey);
+  font-size: 18px;
+  border: unset;
+  cursor: pointer;
+}
+
+.listButton:hover {
+  font-weight: bold;
+}
+
+.selectedListButton {
+  background-color: var(--white);
+  padding: 5px 10px;
+  box-shadow: 3px 0 var(--grey);
+  border-top-right-radius: 30%;
+  font-weight: bold;
+  z-index: 999;
+  border: unset;
+  font-size: 20px;
+}

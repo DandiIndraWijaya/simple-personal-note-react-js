@@ -1,0 +1,50 @@
+@import '../../style/style.css';
+
+.noteCard {
+  background-color: var(--yellow);
+  padding: 10px 7px;
+  flex-basis: 30%;
+  margin: 0 10px 10px;
+  box-shadow: 3px 2px var(--oldGrey);
+  border-radius: 8px;
+}
+
+.pushPin {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border-radius: 100%;
+  box-shadow: 3px 2px var(--oldGrey);
+}
+
+.noteCardHeader {
+  padding: 10px 2px 5px;
+  border-bottom: 1px solid var(--grey);
+}
+
+.noteCardTitle {
+
+}
+
+.noteCardDate {
+  color: var(--oldGrey);
+  font-size: 12px;
+}
+
+.noteCardBody {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 660px) {
+  .noteCard {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (min-width: 661px) and (max-width: 789px) {
+  .noteCard {
+    flex-basis: 45%;
+  }
+  
+}

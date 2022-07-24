@@ -1,0 +1,21 @@
+.button {
+  padding: 8px;
+  border: unset;
+  box-shadow: 3px 2px var(--grey);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: none;
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.display {
+  color: var(--oldGrey);
+  background-color: var(--yellow);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 120px;
+}
