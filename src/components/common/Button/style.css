@@ -19,3 +19,20 @@
   border-bottom-right-radius: 20px;
   width: 120px;
 }
+
+.close {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
+.submit {
+  background-color: var(--grey);
+  color: var(--oldGrey);
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.submit:active {
+  color: var(--oldGrey)
+}

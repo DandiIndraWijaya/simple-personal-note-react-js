@@ -8,18 +8,47 @@ import Input from '../common/Input';
 import Button from '../common/Button';
 
 function NoteInput({
-  titleValue, bodyValue, onChangeTitleInput, onChangeBodyInput, onClickOpenForm, isOpenForm,
+  titleValue,
+  bodyValue,
+  onChangeTitleInput,
+  onChangeBodyInput,
+  onClickToggleForm,
+  isOpenForm,
+  onClickAddNote,
+  errorInputMessage,
 }) {
   return (
     <div className="noteInput">
-      <Button text="Tambah Catatan" type="display" onClick={onClickOpenForm} />
       {
-        isOpenForm && (
-        <div className="formContainer">
-          <Input className="inputText" type="text" placeholder="Ini adalah judul ..." name="title" value={titleValue} onChange={onChangeTitleInput} />
-          <Input className="inputTextArea" type="textarea" placeholder="Tuliskan catatanmu di sini ..." name="body" value={bodyValue} onChange={onChangeBodyInput} />
-        </div>
-        )
+        isOpenForm ? (
+          <>
+            <Button type="close" onClick={onClickToggleForm} />
+            <div className="formContainer">
+              <Input
+                className="inputText"
+                type="text"
+                placeholder="Ini adalah judul ..."
+                name="title"
+                value={titleValue}
+                onChange={onChangeTitleInput}
+                limit={30}
+              />
+              <Input
+                className="inputTextArea"
+                type="textarea"
+                placeholder="Tuliskan catatanmu di sini ..."
+                name="body"
+                value={bodyValue}
+                onChange={onChangeBodyInput}
+              />
+              {
+                errorInputMessage !== '' && <p className="errorInputMessage">{errorInputMessage}</p>
+              }
+              <Button text="Tambah Catatan" type="submit" onClick={onClickAddNote} />
+            </div>
+          </>
+        ) : <Button text="Tambah Catatan" type="display" onClick={onClickToggleForm} />
+
       }
 
     </div>
@@ -31,8 +60,10 @@ NoteInput.propTypes = {
   bodyValue: PropTypes.string.isRequired,
   onChangeTitleInput: PropTypes.func.isRequired,
   onChangeBodyInput: PropTypes.func.isRequired,
-  onClickOpenForm: PropTypes.func.isRequired,
+  onClickToggleForm: PropTypes.func.isRequired,
   isOpenForm: PropTypes.bool.isRequired,
+  onClickAddNote: PropTypes.func.isRequired,
+  errorInputMessage: PropTypes.string.isRequired,
 };
 
 export default NoteInput;

@@ -1,9 +1,5 @@
 @import '../../style/style.css';
 
-::placeholder {
-  color: var(--grey);
-}
-
 .noteInput {
   margin-top: 20px;
   background-color: var(--white);
@@ -18,56 +14,13 @@
   margin-top: 15px;
 }
 
-.input {
-  margin-bottom: 10px;
-}
-
-input {
-  border: unset;
-  border-bottom: solid 2px var(--grey);
-  caret-color: var(--oldGrey);
-  color: var(--oldGrey);
-  letter-spacing: 1px;
-  font-size: 18px;
-  width: 100%;
-  background-color: var(--yellow);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-textarea {
-  width: 100%;
-  padding: 5px 10px;
-  border: unset;
-  border-bottom: solid 2px var(--grey);
-  letter-spacing: 1px;
-  color: var(--oldGrey);
-  font-size: 18px;
-  caret-color: var(--oldGrey);
-  background-color: var(--yellow);
-  height: 100px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-input:focus, textarea:focus{
-  outline: none;
-  border-bottom: solid 2px var(--oldGrey);
-}
-
-.inputText {
-  padding: 5px 10px;
+.errorInputMessage {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 @media only screen and (min-width: 789px) {
-  input {
-    width: 450px;
-  }
-
-  textarea {
-    width: 450px;
-  }
-
   .noteInput {
     width: max-content;
   }
