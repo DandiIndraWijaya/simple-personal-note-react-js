@@ -56,6 +56,31 @@ input:focus, textarea:focus{
   color: var(--grey);
 }
 
+.search {
+  border-bottom: solid 2px var(--grey);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--white);
+}
+
+.inputSearch {
+  border: unset;
+  border-bottom: solid 2px var(--grey);
+  caret-color: var(--oldGrey);
+  color: var(--oldGrey);
+  letter-spacing: 1px;
+  font-size: 18px;
+  width: 100%;
+  background-color: var(--yellow);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-left: 5px;
+  padding: 5px;
+}
+
 @media only screen and (min-width: 789px) {
   input {
     width: 450px;

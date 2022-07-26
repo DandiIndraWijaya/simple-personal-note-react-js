@@ -4,6 +4,12 @@
   margin-top: 15px;
 }
 
+.noteListTopbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .noteListContainer {
   display: flex;
   align-items: flex-start;

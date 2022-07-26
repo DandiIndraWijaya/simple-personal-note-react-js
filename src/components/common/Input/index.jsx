@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Input({
   name, value, onChange, type, placeholder, limit,
@@ -31,7 +33,26 @@ function Input({
         </div>
       );
     }
-  } if (type === 'textarea') {
+  }
+
+  if (type === 'search') {
+    return (
+      <div className="input search">
+        <FontAwesomeIcon icon={faSearch} />
+        <input
+          className="inputSearch"
+          type="text"
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={onChange}
+          spellCheck={false}
+        />
+      </div>
+    );
+  }
+
+  if (type === 'textarea') {
     return (
       <div className="input">
         <textarea
@@ -52,7 +73,7 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(['text', 'textarea']),
+  type: PropTypes.oneOf(['text', 'search', 'textarea']),
   limit: PropTypes.number,
 };
 

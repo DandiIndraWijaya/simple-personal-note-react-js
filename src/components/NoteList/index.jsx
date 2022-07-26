@@ -4,11 +4,15 @@ import NoteCard from '../NoteCard';
 
 import './style.css';
 import NoteListButton from './NoteListButton';
+import Input from '../common/Input';
 
 function NoteList({ notes, isShowArchived, changeNoteListType }) {
   return (
     <div className="noteList">
-      <NoteListButton isShowArchived={isShowArchived} changeNoteListType={changeNoteListType} />
+      <div className="noteListTopbar">
+        <NoteListButton isShowArchived={isShowArchived} changeNoteListType={changeNoteListType} />
+        <Input type="search" value="" placeholder="Cari catatan ..." onChange={() => console.log('change')} />
+      </div>
       <div className="noteListContainer">
         {isShowArchived && notes.map((note, index) => note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
         {!isShowArchived && notes.map((note, index) => !note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
