@@ -73,7 +73,6 @@ input:focus, textarea:focus{
   color: var(--oldGrey);
   letter-spacing: 1px;
   font-size: 18px;
-  width: 100%;
   background-color: var(--yellow);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

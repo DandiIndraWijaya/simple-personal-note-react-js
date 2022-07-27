@@ -8,6 +8,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 function Input({
   name, value, onChange, type, placeholder, limit,
 }) {
+  const onChangeSearch = (e) => {
+    onChange(e.target.value);
+  };
+
   if (type === 'text') {
     if (limit !== 0) {
       return (
@@ -41,11 +45,10 @@ function Input({
         <FontAwesomeIcon icon={faSearch} />
         <input
           className="inputSearch"
+          value={value}
           type="text"
           placeholder={placeholder}
-          name={name}
-          value={value}
-          onChange={onChange}
+          onChange={onChangeSearch}
           spellCheck={false}
         />
       </div>
@@ -69,17 +72,19 @@ function Input({
 }
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['text', 'search', 'textarea']),
   limit: PropTypes.number,
 };
 
 Input.defaultProps = {
+  name: '',
   type: 'text',
   limit: 0,
+  value: '',
 };
 
 export default Input;

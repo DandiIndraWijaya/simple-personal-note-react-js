@@ -10,24 +10,16 @@ class PersonalNotes extends React.Component {
     this.state = {
       data: getInitialData(),
       isOpenForm: false,
-      isShowArchived: false,
       titleInputValue: '',
       bodyInputValue: '',
       errorInputMessage: '',
     };
 
-    this.onChangeNoteListType = this.onChangeNoteListType.bind(this);
     this.onChangeTitleInput = this.onChangeTitleInput.bind(this);
     this.onChangeBodyInput = this.onChangeBodyInput.bind(this);
     this.onClickToggleForm = this.onClickToggleForm.bind(this);
     this.onClickAddNote = this.onClickAddNote.bind(this);
   }
-
-  onChangeNoteListType = () => {
-    this.setState((prevState) => ({
-      isShowArchived: !prevState.isShowArchived,
-    }));
-  };
 
   onChangeTitleInput = (e) => {
     this.setState({
@@ -99,7 +91,6 @@ class PersonalNotes extends React.Component {
   render() {
     const {
       data,
-      isShowArchived,
       titleInputValue,
       bodyInputValue,
       isOpenForm,
@@ -120,8 +111,6 @@ class PersonalNotes extends React.Component {
         />
         <NoteList
           notes={data}
-          isShowArchived={isShowArchived}
-          changeNoteListType={this.onChangeNoteListType}
         />
       </div>
     );

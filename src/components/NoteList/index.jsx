@@ -6,19 +6,54 @@ import './style.css';
 import NoteListButton from './NoteListButton';
 import Input from '../common/Input';
 
-function NoteList({ notes, isShowArchived, changeNoteListType }) {
-  return (
-    <div className="noteList">
-      <div className="noteListTopbar">
-        <NoteListButton isShowArchived={isShowArchived} changeNoteListType={changeNoteListType} />
-        <Input type="search" value="" placeholder="Cari catatan ..." onChange={() => console.log('change')} />
+class NoteList extends React.Component {
+  constructor(props) {
+    const { notes } = props;
+    super(props);
+    this.state = {
+      notes,
+      isShowArchived: false,
+      keyword: '',
+    };
+
+    this.onChangeNoteListType = this.onChangeNoteListType.bind(this);
+    this.onSearchNote = this.onSearchNote.bind(this);
+  }
+
+  onChangeNoteListType = () => {
+    const { notes } = this.props;
+    this.setState((prevState) => ({
+      notes,
+      isShowArchived: !prevState.isShowArchived,
+      keyword: '',
+    }));
+  };
+
+  onSearchNote = (keyword) => {
+    const { notes } = this.props;
+    const { isShowArchived } = this.state;
+    const result = notes.filter((note) => note.title.toLowerCase().includes(keyword.toLowerCase()) && note.archived === isShowArchived);
+    this.setState({
+      notes: result,
+      keyword,
+    });
+  };
+
+  render() {
+    const { notes, isShowArchived, keyword } = this.state;
+    return (
+      <div className="noteList">
+        <div className="noteListTopbar">
+          <NoteListButton isShowArchived={isShowArchived} changeNoteListType={this.onChangeNoteListType} />
+          <Input type="search" value={keyword} placeholder="Cari catatan ..." onChange={this.onSearchNote} />
+        </div>
+        <div className="noteListContainer">
+          {isShowArchived && notes.map((note, index) => note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
+          {!isShowArchived && notes.map((note, index) => !note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
+        </div>
       </div>
-      <div className="noteListContainer">
-        {isShowArchived && notes.map((note, index) => note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
-        {!isShowArchived && notes.map((note, index) => !note.archived && <NoteCard key={`${note.id}`} index={index} note={note} />)}
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 NoteList.propTypes = {
@@ -29,8 +64,6 @@ NoteList.propTypes = {
     createdAt: PropTypes.string,
     archived: PropTypes.bool,
   })).isRequired,
-  isShowArchived: PropTypes.bool.isRequired,
-  changeNoteListType: PropTypes.func.isRequired,
 };
 
 export default NoteList;
