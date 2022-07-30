@@ -21,11 +21,6 @@
   padding: 10px 2px 5px;
   border-bottom: 1px solid var(--grey);
 }
-
-.noteCardTitle {
-
-}
-
 .noteCardDate {
   color: var(--oldGrey);
   font-size: 12px;
@@ -34,6 +29,12 @@
 .noteCardBody {
   margin-top: 10px;
   font-size: 14px;
+}
+
+.noteCardButton {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 660px) {

@@ -64,6 +64,7 @@ input:focus, textarea:focus{
   align-items: center;
   padding: 5px 10px;
   background-color: var(--white);
+  width: max-content;
 }
 
 .inputSearch {
@@ -78,6 +79,7 @@ input:focus, textarea:focus{
   border-bottom-right-radius: 20px;
   margin-left: 5px;
   padding: 5px;
+  
 }
 
 @media only screen and (min-width: 789px) {
@@ -87,5 +89,11 @@ input:focus, textarea:focus{
 
   textarea {
     width: 450px;
+  }
+}
+
+@media only screen and (max-width: 789px) {
+  .search {
+    width: 100%;
   }
 }

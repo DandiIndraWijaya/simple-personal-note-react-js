@@ -36,3 +36,36 @@
 .submit:active {
   color: var(--oldGrey)
 }
+
+.archive, .unarchive {
+  background-color: var(--white);
+  border: 2px solid var(--oldGrey);
+  color: var(--oldGrey);
+  background-color: inherit;
+  box-shadow: unset;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.unarchive {
+  border: 2px solid var(--orange);
+  color: var(--orange);
+}
+
+.archive:active {
+  font-size: 14px;
+  color: var(--oldGrey);
+}
+
+.unarchive:active {
+  font-size: 14px;
+  color: var(--orange);
+}
+
+.remove {
+  margin-left: 10px;
+  border: unset;
+  background-color: inherit;
+  cursor: pointer;
+}

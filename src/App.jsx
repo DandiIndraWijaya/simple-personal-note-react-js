@@ -13,18 +13,28 @@ class PersonalNotes extends React.Component {
       titleInputValue: '',
       bodyInputValue: '',
       errorInputMessage: '',
+      keyword: '',
+      inputTitleLimit: 50,
     };
 
     this.onChangeTitleInput = this.onChangeTitleInput.bind(this);
     this.onChangeBodyInput = this.onChangeBodyInput.bind(this);
     this.onClickToggleForm = this.onClickToggleForm.bind(this);
     this.onClickAddNote = this.onClickAddNote.bind(this);
+    this.onSearchNote = this.onSearchNote.bind(this);
+    this.onClickArchive = this.onClickArchive.bind(this);
+    this.onClickRemove = this.onClickRemove.bind(this);
   }
 
   onChangeTitleInput = (e) => {
+    const limitValue = 50 - e.target.value.length;
+    if (limitValue < 0) {
+      return;
+    }
     this.setState({
       titleInputValue: e.target.value,
       errorInputMessage: '',
+      inputTitleLimit: limitValue,
     });
   };
 
@@ -85,6 +95,40 @@ class PersonalNotes extends React.Component {
       data: addedNewNote,
       titleInputValue: '',
       bodyInputValue: '',
+      inputTitleLimit: 50,
+    });
+  };
+
+  onSearchNote = (keyword) => {
+    this.setState({
+      keyword,
+    });
+  };
+
+  getNoteIndex = (id) => {
+    const { data } = this.state;
+    return data.findIndex((note) => note.id === id);
+  };
+
+  onClickArchive = (id) => {
+    const { data } = this.state;
+    const updatedNote = data;
+
+    const index = this.getNoteIndex(id);
+    updatedNote[index].archived = !updatedNote[index].archived;
+    this.setState({
+      data: updatedNote,
+    });
+  };
+
+  onClickRemove = (id) => {
+    const { data } = this.state;
+    const updatedNote = data;
+
+    const index = this.getNoteIndex(id);
+    updatedNote.splice(index, 1);
+    this.setState({
+      data: updatedNote,
     });
   };
 
@@ -95,6 +139,8 @@ class PersonalNotes extends React.Component {
       bodyInputValue,
       isOpenForm,
       errorInputMessage,
+      keyword,
+      inputTitleLimit,
     } = this.state;
 
     return (
@@ -108,9 +154,14 @@ class PersonalNotes extends React.Component {
           isOpenForm={isOpenForm}
           onClickAddNote={this.onClickAddNote}
           errorInputMessage={errorInputMessage}
+          limitValue={inputTitleLimit}
         />
         <NoteList
           notes={data}
+          keyword={keyword}
+          onSearchNote={this.onSearchNote}
+          onClickArchive={this.onClickArchive}
+          onClickRemove={this.onClickRemove}
         />
       </div>
     );

@@ -6,37 +6,36 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Input({
-  name, value, onChange, type, placeholder, limit,
+  name,
+  value,
+  onChange,
+  type,
+  placeholder,
+  limit,
 }) {
   const onChangeSearch = (e) => {
     onChange(e.target.value);
   };
 
-  if (type === 'text') {
-    if (limit !== 0) {
-      return (
-        <div className="input limit">
-          <input
-            className="inputText"
-            type="text"
-            placeholder={placeholder}
-            name={name}
-            value={value}
-            onChange={(e) => {
-              if (e.target.value.length <= limit) {
-                onChange(e);
-              }
-            }}
-            spellCheck={false}
-          />
-          <div className="limitNumber">
-            (
-            {limit - value.length}
-            )
-          </div>
+  if (type === 'limit') {
+    return (
+      <div className="input limit">
+        <input
+          className="inputText"
+          type="text"
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={onChange}
+          spellCheck={false}
+        />
+        <div className="limitNumber">
+          (
+          {limit}
+          )
         </div>
-      );
-    }
+      </div>
+    );
   }
 
   if (type === 'search') {
@@ -76,7 +75,7 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(['text', 'search', 'textarea']),
+  type: PropTypes.oneOf(['text', 'search', 'textarea', 'limit']),
   limit: PropTypes.number,
 };
 

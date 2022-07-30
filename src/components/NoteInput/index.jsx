@@ -16,6 +16,7 @@ function NoteInput({
   isOpenForm,
   onClickAddNote,
   errorInputMessage,
+  limitValue,
 }) {
   return (
     <div className="noteInput">
@@ -25,16 +26,14 @@ function NoteInput({
             <Button type="close" onClick={onClickToggleForm} />
             <div className="formContainer">
               <Input
-                className="inputText"
-                type="text"
+                type="limit"
                 placeholder="Ini adalah judul ..."
                 name="title"
                 value={titleValue}
                 onChange={onChangeTitleInput}
-                limit={30}
+                limit={limitValue}
               />
               <Input
-                className="inputTextArea"
                 type="textarea"
                 placeholder="Tuliskan catatanmu di sini ..."
                 name="body"
@@ -64,6 +63,7 @@ NoteInput.propTypes = {
   isOpenForm: PropTypes.bool.isRequired,
   onClickAddNote: PropTypes.func.isRequired,
   errorInputMessage: PropTypes.string.isRequired,
+  limitValue: PropTypes.number.isRequired,
 };
 
 export default NoteInput;
